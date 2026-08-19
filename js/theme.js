@@ -1,9 +1,33 @@
 const toggles = document.querySelectorAll(".theme-toggle-input");
 const toggleTargets = document.querySelectorAll(".theme-toggle-click");
 const fontButtons = document.querySelectorAll(".font-size-button");
-const languageSelect = document.getElementById("languageSelect");
+const languageToggle = document.getElementById("languageToggle");
 const translatable = document.querySelectorAll("[data-i18n]");
 const root = document.documentElement;
+
+const storage = {
+  get(key) {
+    try {
+      return globalThis.localStorage?.getItem(key) ?? null;
+    } catch {
+      return null;
+    }
+  },
+  set(key, value) {
+    try {
+      globalThis.localStorage?.setItem(key, value);
+    } catch {
+      // Preferences remain active for this page when storage is unavailable.
+    }
+  },
+  remove(key) {
+    try {
+      globalThis.localStorage?.removeItem(key);
+    } catch {
+      // The system preference can still be applied without persistent storage.
+    }
+  },
+};
 
 const media = globalThis.matchMedia?.("(prefers-color-scheme: dark)");
 const matchToTheme = (matches) => (matches ? "dark" : "light");
@@ -16,7 +40,7 @@ const setTheme = (theme) => {
   });
 };
 
-setTheme(localStorage.getItem("theme") || systemTheme() || "dark");
+setTheme(storage.get("theme") || systemTheme() || "dark");
 
 const setFontSize = (size) => {
   root.dataset.fontSize = size;
@@ -26,25 +50,16 @@ const setFontSize = (size) => {
       button.dataset.fontSize === size ? "true" : "false"
     );
   });
-  localStorage.setItem("fontSize", size);
+  storage.set("fontSize", size);
 };
 
-setFontSize(localStorage.getItem("fontSize") || "md");
+setFontSize(storage.get("fontSize") || "md");
 
 const languages = globalThis.i18n || {};
 const availableLanguages = Object.keys(languages);
-const defaultLanguage = availableLanguages.includes("en")
-  ? "en"
+const defaultLanguage = availableLanguages.includes("de")
+  ? "de"
   : availableLanguages[0];
-
-if (languageSelect && availableLanguages.length > 0) {
-  languageSelect.innerHTML = availableLanguages
-    .map(
-      (code) =>
-        `<option value="${code}">${languages[code].label || code.toUpperCase()}</option>`
-    )
-    .join("");
-}
 
 const setLanguage = (language) => {
   const pack = languages[language] || languages[defaultLanguage];
@@ -59,16 +74,22 @@ const setLanguage = (language) => {
     }
   });
   root.lang = language;
-  if (languageSelect) {
-    languageSelect.value = language;
+  if (languageToggle) {
+    const nextLanguage = availableLanguages.find((code) => code !== language);
+    if (nextLanguage) {
+      const nextLabel = languages[nextLanguage].label || nextLanguage.toUpperCase();
+      languageToggle.textContent = nextLabel;
+      languageToggle.dataset.language = nextLanguage;
+      languageToggle.setAttribute("aria-label", `Switch language to ${nextLabel}`);
+    }
   }
-  localStorage.setItem("language", language);
+  storage.set("language", language);
 };
 
-setLanguage(localStorage.getItem("language") || defaultLanguage);
+setLanguage(storage.get("language") || defaultLanguage);
 
 media?.addEventListener?.("change", (event) => {
-  localStorage.removeItem("theme");
+  storage.remove("theme");
   if (typeof event?.matches === "boolean") {
     setTheme(matchToTheme(event.matches));
   } else {
@@ -80,7 +101,7 @@ toggles.forEach((input) => {
   input.addEventListener("change", () => {
     const current = input.checked ? "light" : "dark";
     setTheme(current);
-    localStorage.setItem("theme", current);
+    storage.set("theme", current);
   });
 });
 
@@ -99,7 +120,7 @@ toggleTargets.forEach((target) => {
 
     const next = currentTheme === "light" ? "dark" : "light";
     setTheme(next);
-    localStorage.setItem("theme", next);
+    storage.set("theme", next);
   });
 });
 
@@ -111,8 +132,8 @@ fontButtons.forEach((button) => {
   });
 });
 
-languageSelect?.addEventListener("change", () => {
-  if (languageSelect.value) {
-    setLanguage(languageSelect.value);
+languageToggle?.addEventListener("click", () => {
+  if (languageToggle.dataset.language) {
+    setLanguage(languageToggle.dataset.language);
   }
 });

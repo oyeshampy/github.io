@@ -5,7 +5,7 @@ globalThis.i18n.de = {
     subtitle:
       "Software Engineer · Backend & Verteilte Systeme<br />Java · Spring Boot · Microservices · Kubernetes · JVM",
     intro:
-      'Ich konzipiere und entwickle zuverlässige, skalierbare Backend-Systeme mit starkem Fokus auf Performance, Observability und Wartbarkeit. Aktuell leite ich die Entwicklung geschäftskritischer CRM-Microservices bei <a href="https://www.check24.de/kredit" target="_blank">Check24 (Kredit)</a> in hochfrequentierten Produktionsumgebungen.',
+      'Ich konzipiere und entwickle zuverlässige, skalierbare Backend-Systeme mit starkem Fokus auf Performance, Observability und Wartbarkeit. Aktuell leite ich die Entwicklung geschäftskritischer CRM-Microservices bei <a href="https://www.check24.de/kredit" target="_blank" rel="noopener noreferrer">Check24 (Kredit)</a> in hochfrequentierten Produktionsumgebungen.',
     focusTitle: "Schwerpunkte",
     focusItem1: "<strong>Java, Spring Boot, REST</strong> und API-Design",
     focusItem2:
@@ -50,7 +50,7 @@ globalThis.i18n.de = {
       "Entwicklung und Pflege interner Universitäts-Webanwendungen",
     certificationsTitle: "Zertifizierungen",
     certItem1:
-      '<strong><a href="https://www.credly.com/badges/36e5f486-e93a-4f5a-9d53-4561a024cb5e/linked_in_profile" target="_blank">CKAD – Certified Kubernetes Application Developer</a></strong>',
+      '<strong><a href="https://www.credly.com/badges/36e5f486-e93a-4f5a-9d53-4561a024cb5e/linked_in_profile" target="_blank" rel="noopener noreferrer">CKAD – Certified Kubernetes Application Developer</a></strong>',
     certItem2: "Infosys Zertifizierter Java-Programmierer",
     certItem3: "Infosys Zertifizierter Agile Developer",
     educationTitle: "Ausbildung",

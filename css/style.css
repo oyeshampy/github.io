@@ -88,19 +88,18 @@
     font-size: 12px;
   }
 
-  .language-select {
+  .language-toggle {
     border: none;
     background: transparent;
     color: var(--text);
     font-weight: 600;
     font-size: 12px;
     cursor: pointer;
-    appearance: none;
-    padding: 0 14px 0 0;
+    padding: 0;
     line-height: 1;
   }
 
-  .language-select:focus-visible {
+  .language-toggle:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
     border-radius: 999px;
@@ -294,4 +293,3 @@
     color: var(--muted);
     font-size: 0.85rem;
   }
-  

@@ -5,7 +5,7 @@ globalThis.i18n.en = {
     subtitle:
       "Software Engineer · Backend & Distributed Systems<br />Java · Spring Boot · Microservices · Kubernetes · JVM",
     intro:
-      'I design and build reliable, scalable backend systems with a strong focus on performance, observability, and maintainability. I currently lead the development of business-critical CRM microservices at <a href="https://www.check24.de/kredit" target="_blank">Check24 (Kredit)</a>, operating in high-traffic, production environments.',
+      'I design and build reliable, scalable backend systems with a strong focus on performance, observability, and maintainability. I currently lead the development of business-critical CRM microservices at <a href="https://www.check24.de/kredit" target="_blank" rel="noopener noreferrer">Check24 (Kredit)</a>, operating in high-traffic, production environments.',
     focusTitle: "Professional Focus",
     focusItem1: "<strong>Java, Spring Boot, REST</strong> and API design",
     focusItem2:
@@ -51,7 +51,7 @@ globalThis.i18n.en = {
       "Developed and maintained internal university web applications",
     certificationsTitle: "Certifications",
     certItem1:
-      '<strong><a href="https://www.credly.com/badges/36e5f486-e93a-4f5a-9d53-4561a024cb5e/linked_in_profile" target="_blank">CKAD – Certified Kubernetes Application Developer</a></strong>',
+      '<strong><a href="https://www.credly.com/badges/36e5f486-e93a-4f5a-9d53-4561a024cb5e/linked_in_profile" target="_blank" rel="noopener noreferrer">CKAD – Certified Kubernetes Application Developer</a></strong>',
     certItem2: "Infosys Certified Java Programmer",
     certItem3: "Infosys Certified Agile Developer",
     educationTitle: "Education",
